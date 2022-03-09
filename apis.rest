@@ -1,0 +1,16 @@
+POST http://localhost:3001/api/probes
+Content-Type: application/json
+
+{
+    "_id": "GP00004",
+    "lot": "VVX24",
+    "manufactureDate": "03/01/2020",
+    "certificationDate": "03/02/2020",
+    "experationDate": "03/02/2022"
+}
+
+###
+GET http://localhost:3001/api/probes
+
+###
+DELETE http://localhost:3001/api/probes/G10000
