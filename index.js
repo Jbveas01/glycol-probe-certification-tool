@@ -9,8 +9,8 @@ const { default: mongoose } = require("mongoose");
 app.use(cors());
 const PORT = 3001;
 
+///Posts a probe to the Database
 app.post("/api/probes", (req, res) => {
-  ///Posts a probe to the Database
   const body = req.body;
   const re = /^GP\d{5}$/;
   Probe.count({ _id: body._id.toUpperCase() }, (err, count) => {
@@ -45,12 +45,14 @@ app.post("/api/probes", (req, res) => {
   });
 });
 
+///Get List of Probes
 app.get("/api/probes", (req, res) => {
   Probe.find({}).then((probe) => {
     res.json(probe);
   });
 });
 
+///Get Probe by ID
 app.get("/api/probes/:id", (req, res) => {
   const id = req.params.id;
   Probe.findById(id).then((probe) => {
@@ -58,6 +60,7 @@ app.get("/api/probes/:id", (req, res) => {
   });
 });
 
+///Update Probe certification + expiration date
 app.put("/api/probes/:id", (req, res) => {
   const body = req.body;
   const probe = {
@@ -71,6 +74,7 @@ app.put("/api/probes/:id", (req, res) => {
     .catch((error) => res.json(error));
 });
 
+///Delte a probe via Serial #
 app.delete("/api/probes/:id", (req, res) => {
   const id = req.params.id.toUpperCase();
   Probe.count({ _id: id }, (err, count) => {
