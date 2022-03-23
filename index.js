@@ -58,6 +58,19 @@ app.get("/api/probes/:id", (req, res) => {
   });
 });
 
+app.put("/api/probes/:id", (req, res) => {
+  const body = req.body;
+  const probe = {
+    certificationDate: body.certificationDate,
+    expirationDate: body.expirationDate,
+  };
+  Probe.findByIdAndUpdate(req.params.id, probe)
+    .then((updatedProbe) => {
+      res.json(updatedProbe);
+    })
+    .catch((error) => res.json(error));
+});
+
 app.delete("/api/probes/:id", (req, res) => {
   const id = req.params.id.toUpperCase();
   Probe.count({ _id: id }, (err, count) => {

@@ -2,11 +2,11 @@ POST http://localhost:3001/api/probes
 Content-Type: application/json
 
 {
-    "_id": "GP00004",
+    "_id": "GP00099",
     "lot": "VVX24",
     "manufactureDate": "03/01/2020",
     "certificationDate": "03/02/2020",
-    "experationDate": "03/02/2022"
+    "expirationDate": "03/02/2022"
 }
 
 ###
@@ -14,3 +14,12 @@ GET http://localhost:3001/api/probes
 
 ###
 DELETE http://localhost:3001/api/probes/G10000
+
+###
+PUT http://localhost:3001/api/probes/GP00007
+Content-Type: application/json
+
+{
+    "certificationDate": "03/02/2024",
+    "expirationDate": "03/02/2026"
+}
