@@ -7,7 +7,7 @@ app.use(express.json());
 const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 app.use(cors());
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 ///Posts a probe to the Database
 app.post("/api/probes", (req, res) => {
