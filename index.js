@@ -4,6 +4,7 @@ const Probe = require("./models/probe");
 const express = require("express");
 const app = express();
 app.use(express.json());
+app.use(express.static("build"));
 const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 app.use(cors());
