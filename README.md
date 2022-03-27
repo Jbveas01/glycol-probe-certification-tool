@@ -16,11 +16,11 @@ The full application is also hosted on Heroku found here: [Glycol Probe Applicat
 
 ## Features
 
-- [x]Posts Data from form to MongoDB atlas
-- [x]Gets Glycol Probe data from MongoDB and displays it
-- [x]Grabs data from multiple arrays and displays it in tables
-- [x]Utilizes Regex for proper Probe Serial # formatting on input form
-- [x]Uses the current date and displays how many days until probes are expired (2 years)
-- [x]Visualizes data in multiple graphs on Dashboard
-- [x]Uses an Express web server to handle server side routing and logic
-- [x]Developed using MERN stack.
+- Posts Data from form to MongoDB atlas
+- Gets Glycol Probe data from MongoDB and displays it
+- Grabs data from multiple arrays and displays it in tables
+- Utilizes Regex for proper Probe Serial # formatting on input form
+- Uses the current date and displays how many days until probes are expired (2 years)
+- Visualizes data in multiple graphs on Dashboard
+- Uses an Express web server to handle server side routing and logic
+- Developed using MERN stack.
