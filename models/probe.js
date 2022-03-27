@@ -2,11 +2,9 @@ const dotenv = require("dotenv");
 dotenv.config();
 const mongoose = require("mongoose");
 
-const password = process.argv[2];
+const URI = process.env.URI;
 
-const url = process.env.URL;
-
-mongoose.connect(url);
+mongoose.connect(URI);
 
 const probeSchema = new mongoose.Schema({
   _id: String,
@@ -15,7 +13,5 @@ const probeSchema = new mongoose.Schema({
   certificationDate: Date,
   expirationDate: Date,
 });
-
-const Probe = mongoose.model("Probe", probeSchema);
 
 module.exports = mongoose.model("Probe", probeSchema);
