@@ -14,10 +14,11 @@ const PORT = process.env.PORT || 3001;
 app.post("/api/probes", (req, res) => {
   const body = req.body;
   const re = /^GP\d{5}$/;
+  ///Regex for Probe formatting. Must be in format 'GP#####'
+
   Probe.count({ _id: body._id.toUpperCase() }, (err, count) => {
     const id = body._id.toUpperCase();
     if (count > 0) {
-      console.log("Duplicate probe found");
       return res
         .status(400)
         .send(
@@ -39,7 +40,6 @@ app.post("/api/probes", (req, res) => {
       });
 
       probe.save().then((savedProbe) => {
-        console.log(`Probe ${id} added to database`);
         res.json(savedProbe);
       });
     }
