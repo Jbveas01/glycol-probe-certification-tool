@@ -17,6 +17,7 @@ app.post("/api/probes", (req, res) => {
   ///Regex for Probe formatting. Must be in format 'GP#####'
   const re = /^GP\d{5}$/;
 
+  ///Checks if probe ID exists in database and if probe ID matches Regex
   Probe.count({ _id: body._id.toUpperCase() }, (err, count) => {
     const id = body._id.toUpperCase();
     if (count > 0) {
