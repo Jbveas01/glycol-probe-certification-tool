@@ -10,11 +10,12 @@ const { default: mongoose } = require("mongoose");
 app.use(cors());
 const PORT = process.env.PORT || 3001;
 
-///Posts a probe to the Database
+///Posts a new probe to the Mongo DB.
 app.post("/api/probes", (req, res) => {
   const body = req.body;
-  const re = /^GP\d{5}$/;
+
   ///Regex for Probe formatting. Must be in format 'GP#####'
+  const re = /^GP\d{5}$/;
 
   Probe.count({ _id: body._id.toUpperCase() }, (err, count) => {
     const id = body._id.toUpperCase();
@@ -46,14 +47,14 @@ app.post("/api/probes", (req, res) => {
   });
 });
 
-///Get List of Probes
+///Retrieves complete list of probes in Database
 app.get("/api/probes", (req, res) => {
   Probe.find({}).then((probe) => {
     res.json(probe);
   });
 });
 
-///Get Probe by ID
+///Retrieves individual probe by ID
 app.get("/api/probes/:id", (req, res) => {
   const id = req.params.id;
   Probe.findById(id).then((probe) => {
@@ -61,7 +62,7 @@ app.get("/api/probes/:id", (req, res) => {
   });
 });
 
-///Update Probe certification + expiration date
+///Updates Probe certification and expiration date
 app.put("/api/probes/:id", (req, res) => {
   const body = req.body;
   const probe = {
@@ -75,7 +76,7 @@ app.put("/api/probes/:id", (req, res) => {
     .catch((error) => res.json(error));
 });
 
-///Delte a probe via Serial #
+///Deletes a probe using the probe Serial # (id)
 app.delete("/api/probes/:id", (req, res) => {
   const id = req.params.id.toUpperCase();
   Probe.count({ _id: id }, (err, count) => {
